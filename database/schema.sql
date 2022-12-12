@@ -52,18 +52,18 @@ CREATE TABLE IF NOT EXISTS countries(
     CONSTRAINT UQ_countries_country_name UNIQUE(COUNTRY_NAME)
 );
 
-CREATE TABLE IF NOT EXISTS address(
+CREATE TABLE IF NOT EXISTS addresses(
 	ID INT AUTO_INCREMENT NOT NULL,
     CITY_ID INT NOT NULL,
     LOCALITY_ID INT NOT NULL,
     PROVINCE_ID INT,
     COUNTRY_ID INT NOT NULL,
     CONSTRAINT PK_address_id PRIMARY KEY(ID),
-    CONSTRAINT FK_address_city_id FOREIGN KEY(CITY_ID) REFERENCES portfolio.cities(ID),
-    CONSTRAINT FK_address_locality_id FOREIGN KEY(LOCALITY_ID) REFERENCES portfolio.localities(ID),
-    CONSTRAINT FK_address_province_id FOREIGN KEY(PROVINCE_ID) REFERENCES portfolio.provinces(ID),
-    CONSTRAINT FK_address_country_id FOREIGN KEY(COUNTRY_ID) REFERENCES portfolio.countries(ID),
-    CONSTRAINT UQ_address_city_id_locality_id_province_id_country_id UNIQUE(CITY_ID, LOCALITY_ID, PROVINCE_ID, COUNTRY_ID)
+    CONSTRAINT FK_addresses_city_id FOREIGN KEY(CITY_ID) REFERENCES portfolio.cities(ID),
+    CONSTRAINT FK_addresses_locality_id FOREIGN KEY(LOCALITY_ID) REFERENCES portfolio.localities(ID),
+    CONSTRAINT FK_addresses_province_id FOREIGN KEY(PROVINCE_ID) REFERENCES portfolio.provinces(ID),
+    CONSTRAINT FK_addresses_country_id FOREIGN KEY(COUNTRY_ID) REFERENCES portfolio.countries(ID),
+    CONSTRAINT UQ_addresses_city_id_locality_id_province_id_country_id UNIQUE(CITY_ID, LOCALITY_ID, PROVINCE_ID, COUNTRY_ID)
 );
 
 CREATE TABLE IF NOT EXISTS persons(
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS persons(
     CV_URL VARCHAR(255) NOT NULL,
 	ADDRESS_ID INT NOT NULL,
     CONSTRAINT PK_persons_id PRIMARY KEY(ID),
-    CONSTRAINT FK_persons_address_id FOREIGN KEY(ADDRESS_ID) REFERENCES portfolio.address(ID)
+    CONSTRAINT FK_persons_address_id FOREIGN KEY(ADDRESS_ID) REFERENCES portfolio.addresses(ID)
 );
 
 CREATE TABLE IF NOT EXISTS technologies(
@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS institutes_universities(
     LOGO_URL VARCHAR(255),
     ADDRESS_ID INT NOT NULL,
     CONSTRAINT PK_institutes_universities_id PRIMARY KEY(ID),
-    CONSTRAINT FK_institutes_universities_address_id FOREIGN KEY(ADDRESS_ID) REFERENCES portfolio.address(ID),
+    CONSTRAINT FK_institutes_universities_address_id FOREIGN KEY(ADDRESS_ID) REFERENCES portfolio.addresses(ID),
     CONSTRAINT UQ_institutes_universities_institute_university_name UNIQUE(INSTITUTE_UNIVERSITY_NAME)
 );
 
@@ -170,7 +170,7 @@ CREATE TABLE IF NOT EXISTS businesses(
     LOGO_URL VARCHAR(255),
     ADDRESS_ID INT NOT NULL,
     CONSTRAINT PK_businesses_id PRIMARY KEY(ID),
-    CONSTRAINT FK_businesses_address_id FOREIGN KEY(ADDRESS_ID) REFERENCES portfolio.address(ID),
+    CONSTRAINT FK_businesses_address_id FOREIGN KEY(ADDRESS_ID) REFERENCES portfolio.addresses(ID),
     CONSTRAINT UQ_businesses_business_name UNIQUE(BUSINESS_NAME)
 );
 
