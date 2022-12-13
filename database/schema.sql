@@ -80,7 +80,8 @@ CREATE TABLE IF NOT EXISTS persons(
     CV_URL VARCHAR(255) NOT NULL,
 	ADDRESS_ID INT NOT NULL,
     CONSTRAINT PK_persons_id PRIMARY KEY(ID),
-    CONSTRAINT FK_persons_address_id FOREIGN KEY(ADDRESS_ID) REFERENCES portfolio.addresses(ID)
+    CONSTRAINT FK_persons_address_id FOREIGN KEY(ADDRESS_ID) REFERENCES portfolio.addresses(ID),
+    CONSTRAINT UQ_persons_email UNIQUE(EMAIL)
 );
 
 CREATE TABLE IF NOT EXISTS technologies(
