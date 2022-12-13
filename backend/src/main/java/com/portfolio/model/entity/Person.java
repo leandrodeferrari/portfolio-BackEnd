@@ -46,7 +46,7 @@ public class Person implements Serializable {
     private String cvUrl;
 
     @OneToOne
-    @JoinColumn(name = "ADDRESS_ID")
+    @JoinColumn(name = "ADDRESS_ID", nullable = false)
     private Address address;
 
 }
