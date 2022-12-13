@@ -158,10 +158,10 @@ INSERT INTO businesses (BUSINESS_NAME, LOGO_URL, ADDRESS_ID)
 -- INSERTS OF PROJECT_TYPES
 
 INSERT INTO project_types (PROJECT_TYPE_NAME) 
-	VALUES ('Personal');
+	VALUES ('Propio');
 
 INSERT INTO project_types (PROJECT_TYPE_NAME) 
-	VALUES ('A Terceros');
+	VALUES ('Aceleración');
     
 -- INSERTS OF PROJECTS
 
