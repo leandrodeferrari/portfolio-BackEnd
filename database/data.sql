@@ -8,7 +8,7 @@ INSERT INTO roles (ROLE_NAME)
 -- INSERTS OF USERS
 
 INSERT INTO users (USER_NAME, EMAIL, USER_PASSWORD, CREATION_DATE, ROLE_ID) 
-	VALUES ('leandro_deferrari', 'leandro_deferrari@hotmail.com', '12345678', CURRENT_TIMESTAMP(), 1);
+	VALUES ('leandro_deferrari', 'leandro_deferrari@hotmail.com', '$2a$10$tcYZ7Vi5yzKlQhIc8kogvu8ETQ9ihqobpCzkiwEvSGlHCvXPV0RAC', CURRENT_TIMESTAMP(), 1);
 
 -- INSERTS OF CITIES
 
