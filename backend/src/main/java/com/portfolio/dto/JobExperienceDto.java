@@ -13,7 +13,7 @@ public class JobExperienceDto implements Serializable {
     private boolean isCurrentJob;
     private String description;
     private String seniorityName;
-    private String jobExperienceName;
+    private String jobExperienceTypeName;
     private BusinessDto businessDto;
 
 }

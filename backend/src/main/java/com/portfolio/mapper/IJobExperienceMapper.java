@@ -16,7 +16,7 @@ public interface IJobExperienceMapper {
             @Mapping(target = "startDate", dateFormat = "dd.MM.yyyy"),
             @Mapping(target = "endDate", dateFormat = "dd.MM.yyyy"),
             @Mapping(target = "seniorityName", source = "jobExperience.seniorityType.name"),
-            @Mapping(target = "jobExperienceName", source = "jobExperience.jobExperienceType.name"),
+            @Mapping(target = "jobExperienceTypeName", source = "jobExperience.jobExperienceType.name"),
             @Mapping(target = "businessDto", source = "business")
     })
     JobExperienceDto jobExperienceToJobExperienceDto(JobExperience jobExperience);
