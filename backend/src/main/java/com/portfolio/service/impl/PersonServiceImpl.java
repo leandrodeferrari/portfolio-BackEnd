@@ -6,8 +6,8 @@ import com.portfolio.mapper.IPersonMapper;
 import com.portfolio.model.entity.Person;
 import com.portfolio.repository.IPersonRepository;
 import com.portfolio.service.IPersonService;
+import com.portfolio.util.PersonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -29,7 +29,7 @@ public class PersonServiceImpl implements IPersonService {
     @Override
     public PersonDto getPerson() {
 
-        String loggedUserEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+        String loggedUserEmail = PersonUtil.getEmail();
         Person person = personRepository.findByEmail(loggedUserEmail).orElseThrow();
 
         PersonDto personDto = personMapper.personToPersonDto(person);
