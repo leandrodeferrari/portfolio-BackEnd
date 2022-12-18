@@ -1,7 +1,6 @@
 package com.portfolio.service.impl;
 
 import com.portfolio.dto.PersonDto;
-import com.portfolio.mapper.IAddressMapper;
 import com.portfolio.mapper.IPersonMapper;
 import com.portfolio.model.entity.Person;
 import com.portfolio.repository.IPersonRepository;
@@ -13,15 +12,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class PersonServiceImpl implements IPersonService {
 
-    private final IAddressMapper addressMapper;
-    private final IPersonRepository personRepository;
     private final IPersonMapper personMapper;
+    private final IPersonRepository personRepository;
 
     @Autowired
-    public PersonServiceImpl(IAddressMapper addressMapper,
-                             IPersonMapper personMapper,
+    public PersonServiceImpl(IPersonMapper personMapper,
                              IPersonRepository personRepository){
-        this.addressMapper = addressMapper;
         this.personMapper = personMapper;
         this.personRepository = personRepository;
     }
@@ -32,10 +28,7 @@ public class PersonServiceImpl implements IPersonService {
         String loggedUserEmail = PersonUtil.getEmail();
         Person person = personRepository.findByEmail(loggedUserEmail).orElseThrow();
 
-        PersonDto personDto = personMapper.personToPersonDto(person);
-        personDto.setAddressDto(addressMapper.addressToAddressDto(person.getAddress()));
-
-        return personDto;
+        return personMapper.personToPersonDto(person);
 
     }
 
