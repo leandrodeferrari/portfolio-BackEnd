@@ -19,7 +19,7 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @GetMapping
+    @GetMapping("/person")
     public ResponseEntity<PersonDto> getPerson(){
         return ResponseEntity.ok().body(personService.getPerson());
     }
