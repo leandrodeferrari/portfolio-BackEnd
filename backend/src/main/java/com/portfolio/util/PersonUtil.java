@@ -1,15 +1,11 @@
 package com.portfolio.util;
 
-import org.springframework.security.core.context.SecurityContextHolder;
-
 public final class PersonUtil {
 
-    private PersonUtil(){
-        throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
-    }
+    public static final String EMAIL = "leandro_deferrari@hotmail.com";
 
-    public static String getEmail(){
-        return SecurityContextHolder.getContext().getAuthentication().getName();
+    public PersonUtil(){
+        throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
     }
 
 }
