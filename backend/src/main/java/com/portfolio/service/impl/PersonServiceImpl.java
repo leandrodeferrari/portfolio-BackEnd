@@ -25,8 +25,7 @@ public class PersonServiceImpl implements IPersonService {
     @Override
     public PersonDto getPerson() {
 
-        String loggedUserEmail = PersonUtil.getEmail();
-        Person person = personRepository.findByEmail(loggedUserEmail).orElseThrow();
+        Person person = personRepository.findByEmail(PersonUtil.EMAIL).orElseThrow();
 
         return personMapper.personToPersonDto(person);
 
