@@ -4,9 +4,8 @@ import com.portfolio.dto.TechnologyDto;
 import com.portfolio.service.ITechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,6 +23,13 @@ public class TechnologyController {
     @GetMapping
     public ResponseEntity<List<TechnologyDto>> getAll(){
         return ResponseEntity.ok().body(technologyService.getAll());
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable("id") Integer id){
+        technologyService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
