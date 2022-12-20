@@ -7,6 +7,7 @@ import java.io.Serializable;
 @Data
 public class CourseDto implements Serializable {
 
+    private Integer id;
     private String title;
     private boolean isApproved;
     private String certificateUrl;

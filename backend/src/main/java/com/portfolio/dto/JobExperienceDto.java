@@ -7,6 +7,7 @@ import java.io.Serializable;
 @Data
 public class JobExperienceDto implements Serializable {
 
+    private Integer id;
     private String name;
     private String startDate;
     private String endDate;
