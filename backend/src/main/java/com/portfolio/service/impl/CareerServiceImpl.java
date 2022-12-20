@@ -4,8 +4,10 @@ import com.portfolio.dto.CareerDto;
 import com.portfolio.mapper.ICareerMapper;
 import com.portfolio.repository.ICareerRepository;
 import com.portfolio.service.ICareerService;
+import com.portfolio.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,6 +29,17 @@ public class CareerServiceImpl implements ICareerService {
         return careerRepository.findAll()
                 .stream()
                 .map(careerMapper::careerToCareerDto).collect(Collectors.toList());
+    }
+
+    @Transactional
+    @Override
+    public void delete(Integer id) {
+
+        ValidationUtil.validateId(id);
+        careerRepository.findById(id).orElseThrow();
+
+        careerRepository.deleteById(id);
+
     }
 
 }

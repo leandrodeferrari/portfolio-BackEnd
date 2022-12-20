@@ -8,4 +8,6 @@ public interface ICareerService {
 
     List<CareerDto> getAll();
 
+    void delete(Integer id);
+
 }
