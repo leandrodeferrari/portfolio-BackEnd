@@ -5,9 +5,8 @@ import com.portfolio.service.ICareerService;
 import com.portfolio.service.ICareerTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,6 +31,13 @@ public class CareerController {
     @GetMapping("/types")
     public ResponseEntity<List<String>> getAllTypes(){
         return ResponseEntity.ok().body(careerTypeService.getAllTypes());
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable("id") Integer id){
+        careerService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
