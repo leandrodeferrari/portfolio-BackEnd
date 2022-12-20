@@ -5,9 +5,8 @@ import com.portfolio.service.ILanguageLevelService;
 import com.portfolio.service.ILanguageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,6 +32,13 @@ public class LanguageController {
     @GetMapping("/levels")
     public ResponseEntity<List<String>> getAllLevels(){
         return ResponseEntity.ok().body(languageLevelService.getAllLevels());
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable("id") Integer id){
+        languageService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
