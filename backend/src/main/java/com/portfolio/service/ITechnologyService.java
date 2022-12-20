@@ -8,4 +8,6 @@ public interface ITechnologyService {
 
     List<TechnologyDto> getAll();
 
+    void delete(Integer id);
+
 }

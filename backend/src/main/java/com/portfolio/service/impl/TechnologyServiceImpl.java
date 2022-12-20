@@ -4,8 +4,10 @@ import com.portfolio.dto.TechnologyDto;
 import com.portfolio.mapper.ITechnologyMapper;
 import com.portfolio.repository.ITechnologyRepository;
 import com.portfolio.service.ITechnologyService;
+import com.portfolio.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,6 +31,17 @@ public class TechnologyServiceImpl implements ITechnologyService {
                 .stream()
                 .map(technologyMapper::technologyToTechnologyDto)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    @Override
+    public void delete(Integer id) {
+
+        ValidationUtil.validateId(id);
+        technologyRepository.findById(id).orElseThrow();
+
+        technologyRepository.deleteById(id);
+
     }
 
 }
