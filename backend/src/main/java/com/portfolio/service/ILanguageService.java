@@ -8,4 +8,6 @@ public interface ILanguageService {
 
     List<LanguageDto> getAll();
 
+    void delete(Integer id);
+
 }

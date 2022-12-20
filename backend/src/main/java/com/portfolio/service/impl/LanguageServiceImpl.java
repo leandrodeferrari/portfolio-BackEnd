@@ -4,8 +4,10 @@ import com.portfolio.dto.LanguageDto;
 import com.portfolio.mapper.ILanguageMapper;
 import com.portfolio.repository.ILanguageRepository;
 import com.portfolio.service.ILanguageService;
+import com.portfolio.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,6 +30,17 @@ public class LanguageServiceImpl implements ILanguageService {
                 .stream()
                 .map(languageMapper::languageToLanguageDto)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    @Override
+    public void delete(Integer id) {
+
+        ValidationUtil.validateId(id);
+        languageRepository.findById(id).orElseThrow();
+
+        languageRepository.deleteById(id);
+
     }
 
 }
