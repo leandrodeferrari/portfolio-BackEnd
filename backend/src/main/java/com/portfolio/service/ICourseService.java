@@ -8,4 +8,6 @@ public interface ICourseService {
 
     List<CourseDto> getAll();
 
+    void delete(Integer id);
+
 }
