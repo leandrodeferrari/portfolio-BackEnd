@@ -8,4 +8,6 @@ public interface IProjectService {
 
     List<ProjectDto> getAll();
 
+    void delete(Integer id);
+
 }
