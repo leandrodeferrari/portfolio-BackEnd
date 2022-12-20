@@ -4,8 +4,10 @@ import com.portfolio.dto.JobExperienceDto;
 import com.portfolio.mapper.IJobExperienceMapper;
 import com.portfolio.repository.IJobExperienceRepository;
 import com.portfolio.service.IJobExperienceService;
+import com.portfolio.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,6 +31,17 @@ public class JobExperienceServiceImpl implements IJobExperienceService {
                 .stream()
                 .map(jobExperienceMapper::jobExperienceToJobExperienceDto)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    @Override
+    public void delete(Integer id) {
+
+        ValidationUtil.validateId(id);
+        jobExperienceRepository.findById(id).orElseThrow();
+
+        jobExperienceRepository.deleteById(id);
+
     }
 
 }

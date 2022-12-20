@@ -8,4 +8,6 @@ public interface IJobExperienceService {
 
     List<JobExperienceDto> getAll();
 
+    void delete(Integer id);
+
 }
