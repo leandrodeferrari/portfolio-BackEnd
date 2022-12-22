@@ -1,4 +1,4 @@
-package com.portfolio.dto;
+package com.portfolio.dto.response;
 
 import lombok.Data;
 

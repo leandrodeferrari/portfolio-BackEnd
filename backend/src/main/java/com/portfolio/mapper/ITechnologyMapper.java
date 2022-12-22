@@ -1,6 +1,6 @@
 package com.portfolio.mapper;
 
-import com.portfolio.dto.TechnologyDto;
+import com.portfolio.dto.response.TechnologyDto;
 import com.portfolio.model.entity.Technology;
 import org.mapstruct.Mapper;
 

@@ -1,6 +1,6 @@
 package com.portfolio.service;
 
-import com.portfolio.dto.JobExperienceDto;
+import com.portfolio.dto.response.JobExperienceDto;
 
 import java.util.List;
 

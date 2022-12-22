@@ -1,6 +1,6 @@
 package com.portfolio.service.impl;
 
-import com.portfolio.dto.BusinessDto;
+import com.portfolio.dto.response.BusinessDto;
 import com.portfolio.mapper.IBusinessMapper;
 import com.portfolio.repository.IBusinessRepository;
 import com.portfolio.service.IBusinessService;

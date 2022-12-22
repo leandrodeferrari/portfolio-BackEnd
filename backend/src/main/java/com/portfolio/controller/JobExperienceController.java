@@ -1,6 +1,6 @@
 package com.portfolio.controller;
 
-import com.portfolio.dto.JobExperienceDto;
+import com.portfolio.dto.response.JobExperienceDto;
 import com.portfolio.service.IJobExperienceService;
 import com.portfolio.service.IJobExperienceTypeService;
 import com.portfolio.service.ISeniorityTypeService;

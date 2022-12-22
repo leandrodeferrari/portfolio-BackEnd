@@ -1,6 +1,6 @@
 package com.portfolio.controller;
 
-import com.portfolio.dto.PersonDto;
+import com.portfolio.dto.response.PersonDto;
 import com.portfolio.service.IPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

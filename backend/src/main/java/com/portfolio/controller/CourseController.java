@@ -1,6 +1,6 @@
 package com.portfolio.controller;
 
-import com.portfolio.dto.CourseDto;
+import com.portfolio.dto.response.CourseDto;
 import com.portfolio.service.ICourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,6 +1,6 @@
 package com.portfolio.controller;
 
-import com.portfolio.dto.CareerDto;
+import com.portfolio.dto.response.CareerDto;
 import com.portfolio.service.ICareerService;
 import com.portfolio.service.ICareerTypeService;
 import org.springframework.beans.factory.annotation.Autowired;

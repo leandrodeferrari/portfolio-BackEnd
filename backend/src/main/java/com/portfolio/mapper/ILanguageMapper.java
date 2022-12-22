@@ -1,6 +1,6 @@
 package com.portfolio.mapper;
 
-import com.portfolio.dto.LanguageDto;
+import com.portfolio.dto.response.LanguageDto;
 import com.portfolio.model.entity.Language;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

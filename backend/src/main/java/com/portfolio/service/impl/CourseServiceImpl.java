@@ -1,6 +1,6 @@
 package com.portfolio.service.impl;
 
-import com.portfolio.dto.CourseDto;
+import com.portfolio.dto.response.CourseDto;
 import com.portfolio.mapper.ICourseMapper;
 import com.portfolio.repository.ICourseRepository;
 import com.portfolio.service.ICourseService;

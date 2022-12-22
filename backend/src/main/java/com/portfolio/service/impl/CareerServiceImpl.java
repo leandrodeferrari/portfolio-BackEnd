@@ -1,6 +1,6 @@
 package com.portfolio.service.impl;
 
-import com.portfolio.dto.CareerDto;
+import com.portfolio.dto.response.CareerDto;
 import com.portfolio.mapper.ICareerMapper;
 import com.portfolio.repository.ICareerRepository;
 import com.portfolio.service.ICareerService;

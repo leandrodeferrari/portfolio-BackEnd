@@ -1,6 +1,6 @@
 package com.portfolio.service.impl;
 
-import com.portfolio.dto.InstituteUniversityDto;
+import com.portfolio.dto.response.InstituteUniversityDto;
 import com.portfolio.mapper.IInstituteUniversityMapper;
 import com.portfolio.repository.IInstituteUniversityRepository;
 import com.portfolio.service.IInstituteUniversityService;

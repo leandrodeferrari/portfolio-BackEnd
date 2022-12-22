@@ -1,6 +1,6 @@
 package com.portfolio.service;
 
-import com.portfolio.dto.PersonDto;
+import com.portfolio.dto.response.PersonDto;
 
 public interface IPersonService {
 

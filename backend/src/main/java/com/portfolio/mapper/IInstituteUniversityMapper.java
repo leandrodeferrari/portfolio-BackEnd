@@ -1,6 +1,6 @@
 package com.portfolio.mapper;
 
-import com.portfolio.dto.InstituteUniversityDto;
+import com.portfolio.dto.response.InstituteUniversityDto;
 import com.portfolio.model.entity.InstituteUniversity;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;

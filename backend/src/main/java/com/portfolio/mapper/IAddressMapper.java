@@ -1,6 +1,6 @@
 package com.portfolio.mapper;
 
-import com.portfolio.dto.AddressDto;
+import com.portfolio.dto.response.AddressDto;
 import com.portfolio.model.entity.Address;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

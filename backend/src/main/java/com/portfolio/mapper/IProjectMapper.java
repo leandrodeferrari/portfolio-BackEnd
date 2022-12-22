@@ -1,6 +1,6 @@
 package com.portfolio.mapper;
 
-import com.portfolio.dto.ProjectDto;
+import com.portfolio.dto.response.ProjectDto;
 import com.portfolio.model.entity.Project;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;

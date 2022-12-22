@@ -1,6 +1,6 @@
 package com.portfolio.service.impl;
 
-import com.portfolio.dto.LanguageDto;
+import com.portfolio.dto.response.LanguageDto;
 import com.portfolio.mapper.ILanguageMapper;
 import com.portfolio.repository.ILanguageRepository;
 import com.portfolio.service.ILanguageService;

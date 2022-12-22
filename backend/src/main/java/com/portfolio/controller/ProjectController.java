@@ -1,6 +1,6 @@
 package com.portfolio.controller;
 
-import com.portfolio.dto.ProjectDto;
+import com.portfolio.dto.response.ProjectDto;
 import com.portfolio.service.IProjectService;
 import com.portfolio.service.IProjectTypeService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.portfolio.mapper;
 
-import com.portfolio.dto.BusinessDto;
+import com.portfolio.dto.response.BusinessDto;
 import com.portfolio.model.entity.Business;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
