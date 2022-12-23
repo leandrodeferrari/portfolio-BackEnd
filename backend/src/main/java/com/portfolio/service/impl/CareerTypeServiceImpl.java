@@ -26,4 +26,9 @@ public class CareerTypeServiceImpl implements ICareerTypeService {
                 .toList();
     }
 
+    @Override
+    public CareerType findById(Integer id) {
+        return careerTypeRepository.findById(id).orElseThrow();
+    }
+
 }
