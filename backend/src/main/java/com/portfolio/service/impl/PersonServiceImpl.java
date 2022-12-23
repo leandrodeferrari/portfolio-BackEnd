@@ -31,4 +31,9 @@ public class PersonServiceImpl implements IPersonService {
 
     }
 
+    @Override
+    public Person findByEmail(String email) {
+        return personRepository.findByEmail(email).orElseThrow();
+    }
+
 }
