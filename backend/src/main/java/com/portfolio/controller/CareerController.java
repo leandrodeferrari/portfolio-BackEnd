@@ -1,13 +1,16 @@
 package com.portfolio.controller;
 
+import com.portfolio.dto.request.CareerInDto;
 import com.portfolio.dto.response.CareerDto;
 import com.portfolio.service.ICareerService;
 import com.portfolio.service.ICareerTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -38,6 +41,11 @@ public class CareerController {
     public ResponseEntity<Void> delete(@PathVariable("id") Integer id){
         careerService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping
+    public ResponseEntity<CareerDto> create(@Valid @RequestBody CareerInDto careerInDto){
+        return ResponseEntity.status(HttpStatus.CREATED).body(careerService.create(careerInDto));
     }
 
 }
