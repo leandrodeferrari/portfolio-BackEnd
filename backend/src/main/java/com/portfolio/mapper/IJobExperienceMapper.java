@@ -13,8 +13,8 @@ import org.mapstruct.Mappings;
 public interface IJobExperienceMapper {
 
     @Mappings({
-            @Mapping(target = "startDate", dateFormat = "dd.MM.yyyy"),
-            @Mapping(target = "endDate", dateFormat = "dd.MM.yyyy"),
+            @Mapping(target = "startDate", dateFormat = "yyyy-MM-dd"),
+            @Mapping(target = "endDate", dateFormat = "yyyy-MM-dd"),
             @Mapping(target = "seniorityName", source = "jobExperience.seniorityType.name"),
             @Mapping(target = "jobExperienceTypeName", source = "jobExperience.jobExperienceType.name"),
             @Mapping(target = "businessDto", source = "business")
