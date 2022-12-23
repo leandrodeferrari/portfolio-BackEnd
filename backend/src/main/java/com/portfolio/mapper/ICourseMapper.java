@@ -1,5 +1,6 @@
 package com.portfolio.mapper;
 
+import com.portfolio.dto.request.CourseInDto;
 import com.portfolio.dto.response.CourseDto;
 import com.portfolio.model.entity.Course;
 import org.mapstruct.InjectionStrategy;
@@ -18,5 +19,12 @@ public interface ICourseMapper {
             @Mapping(target = "instituteUniversityDto", source = "instituteUniversity")
     })
     CourseDto courseToCourseDto(Course course);
+
+    @Mappings({
+            @Mapping(target = "id", ignore = true),
+            @Mapping(target = "instituteUniversity", ignore = true),
+            @Mapping(target = "person", ignore = true)
+    })
+    Course courseInDtoToCourse(CourseInDto courseInDto);
 
 }
