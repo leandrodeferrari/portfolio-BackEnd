@@ -1,6 +1,6 @@
 package com.portfolio.service.impl;
 
-import com.portfolio.dto.TechnologyDto;
+import com.portfolio.dto.response.TechnologyDto;
 import com.portfolio.mapper.ITechnologyMapper;
 import com.portfolio.repository.ITechnologyRepository;
 import com.portfolio.service.ITechnologyService;

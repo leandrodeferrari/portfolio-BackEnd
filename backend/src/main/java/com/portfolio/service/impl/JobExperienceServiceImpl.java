@@ -1,6 +1,6 @@
 package com.portfolio.service.impl;
 
-import com.portfolio.dto.JobExperienceDto;
+import com.portfolio.dto.response.JobExperienceDto;
 import com.portfolio.mapper.IJobExperienceMapper;
 import com.portfolio.repository.IJobExperienceRepository;
 import com.portfolio.service.IJobExperienceService;

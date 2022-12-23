@@ -1,6 +1,6 @@
 package com.portfolio.mapper;
 
-import com.portfolio.dto.CourseDto;
+import com.portfolio.dto.response.CourseDto;
 import com.portfolio.model.entity.Course;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
@@ -13,8 +13,8 @@ import org.mapstruct.Mappings;
 public interface ICourseMapper {
 
     @Mappings({
-            @Mapping(target = "startDate", dateFormat = "dd.MM.yyyy"),
-            @Mapping(target = "endDate", dateFormat = "dd.MM.yyyy"),
+            @Mapping(target = "startDate", dateFormat = "yyyy-MM-dd"),
+            @Mapping(target = "endDate", dateFormat = "yyyy-MM-dd"),
             @Mapping(target = "instituteUniversityDto", source = "instituteUniversity")
     })
     CourseDto courseToCourseDto(Course course);

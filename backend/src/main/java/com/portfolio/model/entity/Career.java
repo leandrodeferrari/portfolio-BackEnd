@@ -4,7 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 @Table(name = "careers", uniqueConstraints =
@@ -22,10 +22,10 @@ public class Career implements Serializable {
     private String name;
 
     @Column(name = "START_DATE", nullable = false)
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 
     @Column(name = "END_DATE")
-    private LocalDateTime endDate;
+    private LocalDate endDate;
 
     @Column(name = "IS_FINISHED", nullable = false)
     private boolean isFinished;

@@ -1,6 +1,6 @@
 package com.portfolio.mapper;
 
-import com.portfolio.dto.ProjectDto;
+import com.portfolio.dto.response.ProjectDto;
 import com.portfolio.model.entity.Project;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
@@ -13,8 +13,8 @@ import org.mapstruct.Mappings;
 public interface IProjectMapper {
 
     @Mappings({
-            @Mapping(target = "startDate", dateFormat = "dd.MM.yyyy"),
-            @Mapping(target = "endDate", dateFormat = "dd.MM.yyyy"),
+            @Mapping(target = "startDate", dateFormat = "yyyy-MM-dd"),
+            @Mapping(target = "endDate", dateFormat = "yyyy-MM-dd"),
             @Mapping(target = "projectTypeName", source = "project.projectType.name"),
             @Mapping(target = "businessDto", source = "business")
     })

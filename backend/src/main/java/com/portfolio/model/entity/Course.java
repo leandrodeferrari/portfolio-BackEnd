@@ -4,7 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 @Table(name = "courses", uniqueConstraints =
@@ -28,10 +28,10 @@ public class Course implements Serializable {
     private String certificateUrl;
 
     @Column(name = "START_DATE", nullable = false)
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 
     @Column(name = "END_DATE")
-    private LocalDateTime endDate;
+    private LocalDate endDate;
 
     @ManyToOne
     @JoinColumn(name = "PERSON_ID", nullable = false)

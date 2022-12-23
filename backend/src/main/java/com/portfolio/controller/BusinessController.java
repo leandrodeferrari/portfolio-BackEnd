@@ -1,6 +1,6 @@
 package com.portfolio.controller;
 
-import com.portfolio.dto.BusinessDto;
+import com.portfolio.dto.response.BusinessDto;
 import com.portfolio.service.IBusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

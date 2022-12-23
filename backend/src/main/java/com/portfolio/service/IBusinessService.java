@@ -1,6 +1,6 @@
 package com.portfolio.service;
 
-import com.portfolio.dto.BusinessDto;
+import com.portfolio.dto.response.BusinessDto;
 
 import java.util.List;
 

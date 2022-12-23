@@ -1,6 +1,6 @@
 package com.portfolio.service;
 
-import com.portfolio.dto.LanguageDto;
+import com.portfolio.dto.response.LanguageDto;
 
 import java.util.List;
 

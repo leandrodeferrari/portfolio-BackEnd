@@ -1,6 +1,6 @@
 package com.portfolio.controller;
 
-import com.portfolio.dto.LanguageDto;
+import com.portfolio.dto.response.LanguageDto;
 import com.portfolio.service.ILanguageLevelService;
 import com.portfolio.service.ILanguageService;
 import org.springframework.beans.factory.annotation.Autowired;

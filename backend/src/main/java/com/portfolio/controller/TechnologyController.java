@@ -1,6 +1,6 @@
 package com.portfolio.controller;
 
-import com.portfolio.dto.TechnologyDto;
+import com.portfolio.dto.response.TechnologyDto;
 import com.portfolio.service.ITechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,6 +1,6 @@
 package com.portfolio.controller;
 
-import com.portfolio.dto.InstituteUniversityDto;
+import com.portfolio.dto.response.InstituteUniversityDto;
 import com.portfolio.service.IInstituteUniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

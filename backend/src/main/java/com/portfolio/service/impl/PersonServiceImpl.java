@@ -1,6 +1,6 @@
 package com.portfolio.service.impl;
 
-import com.portfolio.dto.PersonDto;
+import com.portfolio.dto.response.PersonDto;
 import com.portfolio.mapper.IPersonMapper;
 import com.portfolio.model.entity.Person;
 import com.portfolio.repository.IPersonRepository;
@@ -29,6 +29,11 @@ public class PersonServiceImpl implements IPersonService {
 
         return personMapper.personToPersonDto(person);
 
+    }
+
+    @Override
+    public Person findByEmail(String email) {
+        return personRepository.findByEmail(email).orElseThrow();
     }
 
 }

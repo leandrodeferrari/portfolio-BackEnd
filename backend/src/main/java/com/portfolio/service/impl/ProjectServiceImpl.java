@@ -1,6 +1,6 @@
 package com.portfolio.service.impl;
 
-import com.portfolio.dto.ProjectDto;
+import com.portfolio.dto.response.ProjectDto;
 import com.portfolio.mapper.IProjectMapper;
 import com.portfolio.repository.IProjectRepository;
 import com.portfolio.service.IProjectService;

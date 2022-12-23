@@ -4,7 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 @Table(name = "job_experiences", uniqueConstraints =
@@ -22,10 +22,10 @@ public class JobExperience implements Serializable {
     private String name;
 
     @Column(name = "START_DATE", nullable = false)
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 
     @Column(name = "END_DATE")
-    private LocalDateTime endDate;
+    private LocalDate endDate;
 
     @Column(name = "IS_CURRENT_JOB", nullable = false)
     private boolean isCurrentJob;
