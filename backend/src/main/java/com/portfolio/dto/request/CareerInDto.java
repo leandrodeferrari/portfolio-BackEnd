@@ -3,6 +3,7 @@ package com.portfolio.dto.request;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -26,13 +27,15 @@ public class CareerInDto implements Serializable {
     private boolean isFinished;
 
     @NotNull(message = "The approved subjects cannot be null")
+    @Min(value = 0, message = "The approved subjects cannot be less than 0")
     private Byte approvedSubjects;
 
     @NotNull(message = "The total subjects cannot be null")
+    @Min(value = 0, message = "The total subjects cannot be less than 0")
     private Byte totalSubjects;
 
-    @NotNull(message = "The study plan Url cannot be null")
-    @NotBlank(message = "The study plan Url cannot be blank")
+    @NotNull(message = "The study plan URL cannot be null")
+    @NotBlank(message = "The study plan URL cannot be blank")
     private String studyPlanUrl;
 
     @NotNull(message = "The description cannot be null")
@@ -40,9 +43,11 @@ public class CareerInDto implements Serializable {
     private String description;
 
     @NotNull(message = "The institute or university ID cannot be null")
+    @Min(value = 1, message = "The institute or university ID cannot be less than 1")
     private Integer instituteUniversityId;
 
     @NotNull(message = "The career type ID cannot be null")
+    @Min(value = 1, message = "The career type ID cannot be less than 1")
     private Integer careerTypeId;
 
 }
