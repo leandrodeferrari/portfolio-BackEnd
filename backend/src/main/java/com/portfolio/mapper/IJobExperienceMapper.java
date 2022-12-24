@@ -1,5 +1,6 @@
 package com.portfolio.mapper;
 
+import com.portfolio.dto.request.JobExperienceInDto;
 import com.portfolio.dto.response.JobExperienceDto;
 import com.portfolio.model.entity.JobExperience;
 import org.mapstruct.InjectionStrategy;
@@ -20,5 +21,14 @@ public interface IJobExperienceMapper {
             @Mapping(target = "businessDto", source = "business")
     })
     JobExperienceDto jobExperienceToJobExperienceDto(JobExperience jobExperience);
+
+    @Mappings({
+            @Mapping(target = "business", ignore = true),
+            @Mapping(target = "id", ignore = true),
+            @Mapping(target = "jobExperienceType", ignore = true),
+            @Mapping(target = "person", ignore = true),
+            @Mapping(target = "seniorityType", ignore = true)
+    })
+    JobExperience JobExperienceInDtoToJobExperience(JobExperienceInDto jobExperienceInDto);
 
 }
