@@ -1,9 +1,15 @@
 package com.portfolio.service.impl;
 
+import com.portfolio.dto.request.ProjectInDto;
 import com.portfolio.dto.response.ProjectDto;
 import com.portfolio.mapper.IProjectMapper;
+import com.portfolio.model.entity.Project;
 import com.portfolio.repository.IProjectRepository;
+import com.portfolio.service.IBusinessService;
+import com.portfolio.service.IPersonService;
 import com.portfolio.service.IProjectService;
+import com.portfolio.service.IProjectTypeService;
+import com.portfolio.util.PersonUtil;
 import com.portfolio.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,13 +21,23 @@ import java.util.stream.Collectors;
 @Service
 public class ProjectServiceImpl implements IProjectService {
 
+    private final IBusinessService businessService;
+    private final IPersonService personService;
     private final IProjectMapper projectMapper;
     private final IProjectRepository projectRepository;
+    private final IProjectTypeService projectTypeService;
 
     @Autowired
-    public ProjectServiceImpl(IProjectMapper projectMapper, IProjectRepository projectRepository){
+    public ProjectServiceImpl(IBusinessService businessService,
+                              IPersonService personService,
+                              IProjectMapper projectMapper,
+                              IProjectRepository projectRepository,
+                              IProjectTypeService projectTypeService){
+        this.businessService = businessService;
+        this.personService = personService;
         this.projectMapper = projectMapper;
         this.projectRepository = projectRepository;
+        this.projectTypeService = projectTypeService;
     }
 
     @Override
@@ -40,6 +56,26 @@ public class ProjectServiceImpl implements IProjectService {
         projectRepository.findById(id).orElseThrow();
 
         projectRepository.deleteById(id);
+
+    }
+
+    @Transactional
+    @Override
+    public ProjectDto create(ProjectInDto projectInDto) {
+
+        Project project = projectMapper.projectInDtoToProject(projectInDto);
+
+        if(projectInDto.getBusinessId() != null){
+            project.setBusiness(businessService.findById(projectInDto.getBusinessId()));
+        }
+
+        project.setPerson(personService.findByEmail(PersonUtil.EMAIL));
+
+        project.setProjectType(projectTypeService.findById(projectInDto.getProjectTypeId()));
+
+        projectRepository.save(project);
+
+        return projectMapper.projectToProjectDto(project);
 
     }
 
