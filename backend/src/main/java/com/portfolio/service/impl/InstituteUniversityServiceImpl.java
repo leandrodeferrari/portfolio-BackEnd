@@ -5,6 +5,7 @@ import com.portfolio.mapper.IInstituteUniversityMapper;
 import com.portfolio.model.entity.InstituteUniversity;
 import com.portfolio.repository.IInstituteUniversityRepository;
 import com.portfolio.service.IInstituteUniversityService;
+import com.portfolio.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +35,11 @@ public class InstituteUniversityServiceImpl implements IInstituteUniversityServi
 
     @Override
     public InstituteUniversity findById(Integer id) {
+
+        ValidationUtil.validateId(id);
+
         return instituteUniversityRepository.findById(id).orElseThrow();
+
     }
 
 }
