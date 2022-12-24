@@ -3,6 +3,7 @@ package com.portfolio.service.impl;
 import com.portfolio.model.entity.ProjectType;
 import com.portfolio.repository.IProjectTypeRepository;
 import com.portfolio.service.IProjectTypeService;
+import com.portfolio.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,15 @@ public class ProjectTypeServiceImpl implements IProjectTypeService {
                 .stream()
                 .map(ProjectType::getName)
                 .toList();
+    }
+
+    @Override
+    public ProjectType findById(Integer id) {
+
+        ValidationUtil.validateId(id);
+
+        return projectTypeRepository.findById(id).orElseThrow();
+
     }
 
 }

@@ -1,5 +1,6 @@
 package com.portfolio.mapper;
 
+import com.portfolio.dto.request.ProjectInDto;
 import com.portfolio.dto.response.ProjectDto;
 import com.portfolio.model.entity.Project;
 import org.mapstruct.InjectionStrategy;
@@ -19,5 +20,13 @@ public interface IProjectMapper {
             @Mapping(target = "businessDto", source = "business")
     })
     ProjectDto projectToProjectDto(Project project);
+
+    @Mappings({
+            @Mapping(target = "business", ignore = true),
+            @Mapping(target = "id", ignore = true),
+            @Mapping(target = "person", ignore = true),
+            @Mapping(target = "projectType", ignore = true)
+    })
+    Project projectInDtoToProject(ProjectInDto projectInDto);
 
 }
