@@ -2,8 +2,10 @@ package com.portfolio.service.impl;
 
 import com.portfolio.dto.response.BusinessDto;
 import com.portfolio.mapper.IBusinessMapper;
+import com.portfolio.model.entity.Business;
 import com.portfolio.repository.IBusinessRepository;
 import com.portfolio.service.IBusinessService;
+import com.portfolio.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,15 @@ public class BusinessServiceImpl implements IBusinessService {
                 .stream()
                 .map(businessMapper::businessToBusinessDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Business findById(Integer id) {
+
+        ValidationUtil.validateId(id);
+
+        return businessRepository.findById(id).orElseThrow();
+
     }
 
 }
