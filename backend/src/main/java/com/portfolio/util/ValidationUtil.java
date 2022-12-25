@@ -20,4 +20,16 @@ public final class ValidationUtil {
 
     }
 
+    public static void validateName(String name){
+
+        if(name == null){
+            throw new BadRequestException("The name cannot be null");
+        }
+
+        if(name.isBlank()){
+            throw new BadRequestException("The name cannot be blank");
+        }
+
+    }
+
 }
