@@ -48,4 +48,10 @@ public class CareerController {
         return ResponseEntity.status(HttpStatus.CREATED).body(careerService.create(careerInDto));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<CareerDto> update(@Valid @RequestBody CareerInDto careerInDto,
+                                            @PathVariable("id") Integer id){
+        return ResponseEntity.status(HttpStatus.CREATED).body(careerService.update(careerInDto, id));
+    }
+
 }
