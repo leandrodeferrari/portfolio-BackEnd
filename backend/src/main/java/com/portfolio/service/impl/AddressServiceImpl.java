@@ -1,17 +1,22 @@
 package com.portfolio.service.impl;
 
+import com.portfolio.dto.request.AddressInDto;
+import com.portfolio.dto.response.AddressDto;
+import com.portfolio.mapper.IAddressMapper;
 import com.portfolio.model.entity.Address;
 import com.portfolio.repository.IAddressRepository;
 import com.portfolio.service.*;
 import com.portfolio.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 public class AddressServiceImpl implements IAddressService {
 
+    private final IAddressMapper addressMapper;
     private final IAddressRepository addressRepository;
     private final ICityService cityService;
     private final ICountryService countryService;
@@ -19,11 +24,13 @@ public class AddressServiceImpl implements IAddressService {
     private final IProvinceService provinceService;
 
     @Autowired
-    public AddressServiceImpl(IAddressRepository addressRepository,
+    public AddressServiceImpl(IAddressMapper addressMapper,
+                              IAddressRepository addressRepository,
                               ICityService cityService,
                               ICountryService countryService,
                               ILocalityService localityService,
                               IProvinceService provinceService){
+        this.addressMapper = addressMapper;
         this.addressRepository = addressRepository;
         this.cityService = cityService;
         this.countryService = countryService;
@@ -58,6 +65,42 @@ public class AddressServiceImpl implements IAddressService {
 
         return addressRepository.findById(id).orElseThrow();
 
+    }
+
+    @Transactional
+    @Override
+    public AddressDto create(AddressInDto addressInDto) {
+
+        Address address = new Address();
+        address.setCity(cityService.findByName(addressInDto.getCityName()));
+        address.setCountry(countryService.findByName(addressInDto.getCountryName()));
+        address.setLocality(localityService.findByName(addressInDto.getLocalityName()));
+        address.setProvince(provinceService.findByName(addressInDto.getProvinceName()));
+
+        addressRepository.save(address);
+
+        return addressMapper.addressToAddressDto(address);
+
+    }
+
+    @Override
+    public String createCity(String cityName) {
+        return cityService.create(cityName);
+    }
+
+    @Override
+    public String createCountry(String countryName) {
+        return countryService.create(countryName);
+    }
+
+    @Override
+    public String createLocality(String localityName) {
+        return localityService.create(localityName);
+    }
+
+    @Override
+    public String createProvince(String provinceName) {
+        return provinceService.create(provinceName);
     }
 
 }
