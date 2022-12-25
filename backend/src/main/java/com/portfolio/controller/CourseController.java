@@ -40,4 +40,10 @@ public class CourseController {
         return ResponseEntity.status(HttpStatus.CREATED).body(courseService.create(courseInDto));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<CourseDto> update(@Valid @RequestBody CourseInDto courseInDto,
+                                            @PathVariable("id") Integer id){
+        return ResponseEntity.status(HttpStatus.CREATED).body(courseService.update(courseInDto, id));
+    }
+
 }
