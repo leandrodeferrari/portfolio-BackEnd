@@ -8,9 +8,8 @@ import java.util.List;
 public interface ICourseService {
 
     List<CourseDto> getAll();
-
     void delete(Integer id);
-
     CourseDto create(CourseInDto courseInDto);
+    CourseDto update(CourseInDto courseInDto, Integer id);
 
 }

@@ -2,6 +2,7 @@ package com.portfolio.service.impl;
 
 import com.portfolio.dto.request.CourseInDto;
 import com.portfolio.dto.response.CourseDto;
+import com.portfolio.exception.BadRequestException;
 import com.portfolio.mapper.ICourseMapper;
 import com.portfolio.model.entity.Course;
 import com.portfolio.repository.ICourseRepository;
@@ -68,6 +69,34 @@ public class CourseServiceImpl implements ICourseService {
         courseRepository.save(course);
 
         return courseMapper.courseToCourseDto(course);
+
+    }
+
+    @Transactional
+    @Override
+    public CourseDto update(CourseInDto courseInDto, Integer id) {
+
+        ValidationUtil.validateId(id);
+
+        if(courseRepository.existsById(id)){
+
+            Course course = courseMapper.courseInDtoToCourse(courseInDto);
+            course.setId(id);
+
+            course.setPerson(personService.findByEmail(PersonUtil.EMAIL));
+
+            course.setInstituteUniversity(instituteUniversityService
+                    .findById(courseInDto.getInstituteUniversityId()));
+
+            courseRepository.save(course);
+
+            return courseMapper.courseToCourseDto(course);
+
+        } else {
+
+            throw new BadRequestException("The ID not exists");
+
+        }
 
     }
 
