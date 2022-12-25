@@ -2,6 +2,7 @@ package com.portfolio.service.impl;
 
 import com.portfolio.dto.request.CareerInDto;
 import com.portfolio.dto.response.CareerDto;
+import com.portfolio.exception.BadRequestException;
 import com.portfolio.mapper.ICareerMapper;
 import com.portfolio.model.entity.Career;
 import com.portfolio.repository.ICareerRepository;
@@ -74,6 +75,36 @@ public class CareerServiceImpl implements ICareerService {
         careerRepository.save(career);
 
         return careerMapper.careerToCareerDto(career);
+
+    }
+
+    @Transactional
+    @Override
+    public CareerDto update(CareerInDto careerInDto, Integer id) {
+
+        ValidationUtil.validateId(id);
+
+        if(careerRepository.existsById(id)){
+
+            Career career = careerMapper.careerInDtoToCareer(careerInDto);
+            career.setId(id);
+
+            career.setInstituteUniversity(instituteUniversityService
+                    .findById(careerInDto.getInstituteUniversityId()));
+
+            career.setCareerType(careerTypeService.findById(careerInDto.getCareerTypeId()));
+
+            career.setPerson(personService.findByEmail(PersonUtil.EMAIL));
+
+            careerRepository.save(career);
+
+            return careerMapper.careerToCareerDto(career);
+
+        } else {
+
+            throw new BadRequestException("The ID not exists");
+
+        }
 
     }
 

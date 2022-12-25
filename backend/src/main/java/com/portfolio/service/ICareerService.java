@@ -8,9 +8,8 @@ import java.util.List;
 public interface ICareerService {
 
     List<CareerDto> getAll();
-
     void delete(Integer id);
-
     CareerDto create(CareerInDto careerInDto);
+    CareerDto update(CareerInDto careerInDto, Integer id);
 
 }
