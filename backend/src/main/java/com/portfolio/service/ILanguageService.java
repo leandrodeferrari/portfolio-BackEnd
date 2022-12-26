@@ -8,9 +8,8 @@ import java.util.List;
 public interface ILanguageService {
 
     List<LanguageDto> getAll();
-
     void delete(Integer id);
-
     LanguageDto create(LanguageInDto languageInDto);
+    LanguageDto update(LanguageInDto languageInDto, Integer id);
 
 }
