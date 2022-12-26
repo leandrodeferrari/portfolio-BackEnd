@@ -2,6 +2,7 @@ package com.portfolio.service.impl;
 
 import com.portfolio.dto.request.TechnologyInDto;
 import com.portfolio.dto.response.TechnologyDto;
+import com.portfolio.exception.BadRequestException;
 import com.portfolio.mapper.ITechnologyMapper;
 import com.portfolio.model.entity.Technology;
 import com.portfolio.repository.ITechnologyRepository;
@@ -62,6 +63,31 @@ public class TechnologyServiceImpl implements ITechnologyService {
         technologyRepository.save(technology);
 
         return technologyMapper.technologyToTechnologyDto(technology);
+
+    }
+
+    @Transactional
+    @Override
+    public TechnologyDto update(TechnologyInDto technologyInDto, Integer id) {
+
+        ValidationUtil.validateId(id);
+
+        if(technologyRepository.existsById(id)){
+
+            Technology technology = technologyMapper.technologyInDtoToTechnology(technologyInDto);
+            technology.setId(id);
+
+            technology.setPerson(personService.findByEmail(PersonUtil.EMAIL));
+
+            technologyRepository.save(technology);
+
+            return technologyMapper.technologyToTechnologyDto(technology);
+
+        } else {
+
+            throw new BadRequestException("The ID not exists");
+
+        }
 
     }
 
