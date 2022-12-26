@@ -49,4 +49,10 @@ public class LanguageController {
         return ResponseEntity.status(HttpStatus.CREATED).body(languageService.create(languageInDto));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<LanguageDto> update(@Valid @RequestBody LanguageInDto languageInDto,
+                                              @PathVariable("id") Integer id){
+        return ResponseEntity.status(HttpStatus.CREATED).body(languageService.update(languageInDto, id));
+    }
+
 }

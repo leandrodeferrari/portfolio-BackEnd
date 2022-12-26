@@ -2,6 +2,7 @@ package com.portfolio.service.impl;
 
 import com.portfolio.dto.request.LanguageInDto;
 import com.portfolio.dto.response.LanguageDto;
+import com.portfolio.exception.BadRequestException;
 import com.portfolio.mapper.ILanguageMapper;
 import com.portfolio.model.entity.Language;
 import com.portfolio.repository.ILanguageRepository;
@@ -69,6 +70,34 @@ public class LanguageServiceImpl implements ILanguageService {
         languageRepository.save(language);
 
         return languageMapper.languageToLanguageDto(language);
+
+    }
+
+    @Transactional
+    @Override
+    public LanguageDto update(LanguageInDto languageInDto, Integer id) {
+
+        ValidationUtil.validateId(id);
+
+        if(languageRepository.existsById(id)){
+
+            Language language = languageMapper.LanguageInDtoToLanguage(languageInDto);
+            language.setId(id);
+
+            language.setPerson(personService.findByEmail(PersonUtil.EMAIL));
+
+            language.setLanguageLevel(languageLevelService
+                    .findById(languageInDto.getLanguageLevelId()));
+
+            languageRepository.save(language);
+
+            return languageMapper.languageToLanguageDto(language);
+
+        } else {
+
+            throw new BadRequestException("The ID not exists");
+
+        }
 
     }
 
