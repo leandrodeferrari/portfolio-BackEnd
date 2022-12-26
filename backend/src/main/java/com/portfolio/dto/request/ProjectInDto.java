@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class ProjectInDto implements Serializable {
 
     @NotNull(message = "The name cannot be null")
-    @NotBlank(message = "The name cannot be blank")
+    @NotEmpty(message = "The name cannot be empty")
     private String name;
 
     @NotNull(message = "The start date cannot be null")
@@ -25,14 +25,14 @@ public class ProjectInDto implements Serializable {
     private LocalDate endDate;
 
     @NotNull(message = "The description cannot be null")
-    @NotBlank(message = "The description cannot be blank")
+    @NotEmpty(message = "The description cannot be empty")
     private String description;
 
-    @NotBlank(message = "The image URL cannot be blank")
+    @NotEmpty(message = "The image URL cannot be empty")
     private String imageUrl;
 
     @NotNull(message = "The evidence URL cannot be null")
-    @NotBlank(message = "The evidence URL cannot be blank")
+    @NotEmpty(message = "The evidence URL cannot be empty")
     private String evidenceUrl;
 
     @NotNull(message = "The project type ID cannot be null")

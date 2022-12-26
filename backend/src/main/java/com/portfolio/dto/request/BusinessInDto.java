@@ -3,7 +3,7 @@ package com.portfolio.dto.request;
 import lombok.Data;
 
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
@@ -11,10 +11,10 @@ import java.io.Serializable;
 public class BusinessInDto implements Serializable {
 
     @NotNull(message = "The name cannot be null")
-    @NotBlank(message = "The name cannot be blank")
+    @NotEmpty(message = "The name cannot be empty")
     private String name;
 
-    @NotBlank(message = "The logo URL cannot be blank")
+    @NotEmpty(message = "The logo URL cannot be empty")
     private String logoUrl;
 
     @NotNull(message = "The address ID cannot be null")
