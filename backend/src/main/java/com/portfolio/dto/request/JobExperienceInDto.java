@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class JobExperienceInDto implements Serializable {
 
     @NotNull(message = "The name cannot be null")
-    @NotBlank(message = "The name cannot be blank")
+    @NotEmpty(message = "The name cannot be empty")
     private String name;
 
     @NotNull(message = "The start date cannot be null")
@@ -27,7 +27,7 @@ public class JobExperienceInDto implements Serializable {
     private boolean isCurrentJob;
 
     @NotNull(message = "The description cannot be null")
-    @NotBlank(message = "The description cannot be blank")
+    @NotEmpty(message = "The description cannot be empty")
     private String description;
 
     @NotNull(message = "The seniority type ID cannot be null")
