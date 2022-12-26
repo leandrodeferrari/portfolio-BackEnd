@@ -2,6 +2,7 @@ package com.portfolio.service.impl;
 
 import com.portfolio.dto.request.JobExperienceInDto;
 import com.portfolio.dto.response.JobExperienceDto;
+import com.portfolio.exception.BadRequestException;
 import com.portfolio.mapper.IJobExperienceMapper;
 import com.portfolio.model.entity.JobExperience;
 import com.portfolio.repository.IJobExperienceRepository;
@@ -81,6 +82,42 @@ public class JobExperienceServiceImpl implements IJobExperienceService {
         jobExperienceRepository.save(jobExperience);
 
         return jobExperienceMapper.jobExperienceToJobExperienceDto(jobExperience);
+
+    }
+
+    @Transactional
+    @Override
+    public JobExperienceDto update(JobExperienceInDto jobExperienceInDto, Integer id) {
+
+        ValidationUtil.validateId(id);
+
+        if(jobExperienceRepository.existsById(id)){
+
+            JobExperience jobExperience = jobExperienceMapper
+                    .JobExperienceInDtoToJobExperience(jobExperienceInDto);
+            jobExperience.setId(id);
+
+            jobExperience.setPerson(personService.findByEmail(PersonUtil.EMAIL));
+
+            if(jobExperienceInDto.getBusinessId() != null){
+                jobExperience.setBusiness(businessService.findById(jobExperienceInDto.getBusinessId()));
+            }
+
+            jobExperience.setJobExperienceType(jobExperienceTypeService
+                    .findById(jobExperienceInDto.getJobExperienceTypeId()));
+
+            jobExperience.setSeniorityType(seniorityTypeService
+                    .findById(jobExperienceInDto.getSeniorityTypeId()));
+
+            jobExperienceRepository.save(jobExperience);
+
+            return jobExperienceMapper.jobExperienceToJobExperienceDto(jobExperience);
+
+        } else {
+
+            throw new BadRequestException("The ID not exists");
+
+        }
 
     }
 
