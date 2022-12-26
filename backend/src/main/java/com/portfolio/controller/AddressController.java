@@ -67,4 +67,10 @@ public class AddressController {
         return ResponseEntity.status(HttpStatus.CREATED).body(addressService.createProvince(provinceName));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<AddressDto> update(@Valid @RequestBody AddressInDto addressInDto,
+                                             @PathVariable("id") Integer id){
+        return ResponseEntity.status(HttpStatus.CREATED).body(addressService.update(addressInDto, id));
+    }
+
 }
