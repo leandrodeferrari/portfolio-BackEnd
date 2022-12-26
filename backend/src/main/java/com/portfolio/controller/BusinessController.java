@@ -25,7 +25,7 @@ public class BusinessController {
         this.businessService = businessService;
     }
 
-    @Operation(description = "Get All Business. Any User. Parameters: none")
+    @Operation(description = "Get All Businesses. Any User. Parameters: none")
     @GetMapping
     public ResponseEntity<List<BusinessDto>> getAll(){
         return ResponseEntity.ok().body(businessService.getAll());
