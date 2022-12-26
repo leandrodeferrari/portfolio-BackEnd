@@ -8,9 +8,8 @@ import java.util.List;
 public interface IProjectService {
 
     List<ProjectDto> getAll();
-
     void delete(Integer id);
-
     ProjectDto create(ProjectInDto projectInDto);
+    ProjectDto update(ProjectInDto projectInDto, Integer id);
 
 }
