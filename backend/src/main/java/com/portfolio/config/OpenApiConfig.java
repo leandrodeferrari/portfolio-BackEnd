@@ -2,6 +2,7 @@ package com.portfolio.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
@@ -39,8 +40,12 @@ public class OpenApiConfig {
                 .info(new Info()
                         .title(apiTitle)
                         .version(apiVersion)
-                        .description("Portfolio of Leandro Deferrari \uD83E\uDD73<br><br>" +
-                                        "<a href=\"https://github.com/leandrodeferrari/portfolio-BackEnd\" target=_blank>GitHub repository</a>"));
+                        .description("<strong>My Portfolio</strong> \uD83E\uDD73<br><br>" +
+                                        "<a href=\"https://github.com/leandrodeferrari/portfolio-BackEnd\" target=_blank>GitHub Repository</a>")
+                        .contact(new Contact()
+                                .url("Coming soon")
+                                .email("leandro_deferrari@hotmail.com")
+                                .name("Leandro Deferrari")));
 
     }
 
