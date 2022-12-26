@@ -8,9 +8,8 @@ import java.util.List;
 public interface ITechnologyService {
 
     List<TechnologyDto> getAll();
-
     void delete(Integer id);
-
     TechnologyDto create(TechnologyInDto technologyInDto);
+    TechnologyDto update(TechnologyInDto technologyInDto, Integer id);
 
 }

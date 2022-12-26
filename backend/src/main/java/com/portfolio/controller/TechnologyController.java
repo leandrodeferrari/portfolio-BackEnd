@@ -40,4 +40,10 @@ public class TechnologyController {
         return ResponseEntity.status(HttpStatus.CREATED).body(technologyService.create(technologyInDto));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<TechnologyDto> update(@Valid @RequestBody TechnologyInDto technologyInDto,
+                                                @PathVariable("id") Integer id){
+        return ResponseEntity.status(HttpStatus.CREATED).body(technologyService.update(technologyInDto, id));
+    }
+
 }
