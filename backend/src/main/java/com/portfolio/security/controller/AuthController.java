@@ -33,7 +33,7 @@ public class AuthController {
     }
 
     @Operation(description = "Logout User. User Authenticated. Parameters: Schema AddressDto.")
-    @GetMapping("/logout")
+    @PostMapping("/logout")
     public ResponseEntity<?> logout(HttpServletRequest request, HttpServletResponse response){
         authService.logout(request, response);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
