@@ -58,4 +58,11 @@ public class JobExperienceController {
         return ResponseEntity.status(HttpStatus.CREATED).body(jobExperienceService.create(jobExperienceInDto));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<JobExperienceDto> update(@Valid @RequestBody JobExperienceInDto jobExperienceInDto,
+                                                   @PathVariable("id") Integer id){
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(jobExperienceService.update(jobExperienceInDto, id));
+    }
+
 }
