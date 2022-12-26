@@ -2,6 +2,7 @@ package com.portfolio.service.impl;
 
 import com.portfolio.dto.request.AddressInDto;
 import com.portfolio.dto.response.AddressDto;
+import com.portfolio.exception.BadRequestException;
 import com.portfolio.mapper.IAddressMapper;
 import com.portfolio.model.entity.Address;
 import com.portfolio.repository.IAddressRepository;
@@ -101,6 +102,33 @@ public class AddressServiceImpl implements IAddressService {
     @Override
     public String createProvince(String provinceName) {
         return provinceService.create(provinceName);
+    }
+
+    @Transactional
+    @Override
+    public AddressDto update(AddressInDto addressInDto, Integer id) {
+
+        ValidationUtil.validateId(id);
+
+        if(addressRepository.existsById(id)){
+
+            Address address = new Address();
+            address.setId(id);
+            address.setCity(cityService.findByName(addressInDto.getCityName()));
+            address.setCountry(countryService.findByName(addressInDto.getCountryName()));
+            address.setLocality(localityService.findByName(addressInDto.getLocalityName()));
+            address.setProvince(provinceService.findByName(addressInDto.getProvinceName()));
+
+            addressRepository.save(address);
+
+            return addressMapper.addressToAddressDto(address);
+
+        } else {
+
+            throw new BadRequestException("The ID not exists");
+
+        }
+
     }
 
 }
