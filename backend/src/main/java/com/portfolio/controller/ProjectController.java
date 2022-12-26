@@ -49,4 +49,10 @@ public class ProjectController {
         return ResponseEntity.status(HttpStatus.CREATED).body(projectService.create(projectInDto));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ProjectDto> update(@Valid @RequestBody ProjectInDto projectInDto,
+                                             @PathVariable("id") Integer id){
+        return ResponseEntity.status(HttpStatus.CREATED).body(projectService.update(projectInDto, id));
+    }
+
 }

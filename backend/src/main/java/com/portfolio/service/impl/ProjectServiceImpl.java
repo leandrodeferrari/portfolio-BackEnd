@@ -2,6 +2,7 @@ package com.portfolio.service.impl;
 
 import com.portfolio.dto.request.ProjectInDto;
 import com.portfolio.dto.response.ProjectDto;
+import com.portfolio.exception.BadRequestException;
 import com.portfolio.mapper.IProjectMapper;
 import com.portfolio.model.entity.Project;
 import com.portfolio.repository.IProjectRepository;
@@ -76,6 +77,37 @@ public class ProjectServiceImpl implements IProjectService {
         projectRepository.save(project);
 
         return projectMapper.projectToProjectDto(project);
+
+    }
+
+    @Transactional
+    @Override
+    public ProjectDto update(ProjectInDto projectInDto, Integer id) {
+
+        ValidationUtil.validateId(id);
+
+        if(projectRepository.existsById(id)){
+
+            Project project = projectMapper.projectInDtoToProject(projectInDto);
+            project.setId(id);
+
+            if(projectInDto.getBusinessId() != null){
+                project.setBusiness(businessService.findById(projectInDto.getBusinessId()));
+            }
+
+            project.setPerson(personService.findByEmail(PersonUtil.EMAIL));
+
+            project.setProjectType(projectTypeService.findById(projectInDto.getProjectTypeId()));
+
+            projectRepository.save(project);
+
+            return projectMapper.projectToProjectDto(project);
+
+        } else {
+
+            throw new BadRequestException("The ID not exists");
+
+        }
 
     }
 
