@@ -26,8 +26,8 @@ public final class ValidationUtil {
             throw new BadRequestException("The name cannot be null");
         }
 
-        if(name.isBlank()){
-            throw new BadRequestException("The name cannot be blank");
+        if(name.isEmpty()){
+            throw new BadRequestException("The name cannot be empty");
         }
 
     }
