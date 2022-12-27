@@ -9,10 +9,12 @@ import com.portfolio.repository.IAddressRepository;
 import com.portfolio.service.*;
 import com.portfolio.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class AddressServiceImpl implements IAddressService {
@@ -23,6 +25,7 @@ public class AddressServiceImpl implements IAddressService {
     private final ICountryService countryService;
     private final ILocalityService localityService;
     private final IProvinceService provinceService;
+    private final MessageSource messageSource;
 
     @Autowired
     public AddressServiceImpl(IAddressMapper addressMapper,
@@ -30,13 +33,15 @@ public class AddressServiceImpl implements IAddressService {
                               ICityService cityService,
                               ICountryService countryService,
                               ILocalityService localityService,
-                              IProvinceService provinceService){
+                              IProvinceService provinceService,
+                              MessageSource messageSource){
         this.addressMapper = addressMapper;
         this.addressRepository = addressRepository;
         this.cityService = cityService;
         this.countryService = countryService;
         this.localityService = localityService;
         this.provinceService = provinceService;
+        this.messageSource = messageSource;
     }
 
     @Override
@@ -125,7 +130,7 @@ public class AddressServiceImpl implements IAddressService {
 
         } else {
 
-            throw new BadRequestException("The ID not exists");
+            throw new BadRequestException(messageSource.getMessage("validation.id.not.exists", null, Locale.getDefault()));
 
         }
 

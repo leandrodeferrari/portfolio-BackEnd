@@ -10,10 +10,12 @@ import com.portfolio.service.*;
 import com.portfolio.util.PersonUtil;
 import com.portfolio.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,6 +27,7 @@ public class JobExperienceServiceImpl implements IJobExperienceService {
     private final IJobExperienceTypeService jobExperienceTypeService;
     private final IPersonService personService;
     private final ISeniorityTypeService seniorityTypeService;
+    private final MessageSource messageSource;
 
     @Autowired
     public JobExperienceServiceImpl(IBusinessService businessService,
@@ -32,13 +35,15 @@ public class JobExperienceServiceImpl implements IJobExperienceService {
                                     IJobExperienceRepository jobExperienceRepository,
                                     IJobExperienceTypeService jobExperienceTypeService,
                                     IPersonService personService,
-                                    ISeniorityTypeService seniorityTypeService){
+                                    ISeniorityTypeService seniorityTypeService,
+                                    MessageSource messageSource){
         this.businessService = businessService;
         this.jobExperienceMapper = jobExperienceMapper;
         this.jobExperienceRepository = jobExperienceRepository;
         this.jobExperienceTypeService = jobExperienceTypeService;
         this.personService = personService;
         this.seniorityTypeService = seniorityTypeService;
+        this.messageSource = messageSource;
     }
 
     @Override
@@ -115,7 +120,7 @@ public class JobExperienceServiceImpl implements IJobExperienceService {
 
         } else {
 
-            throw new BadRequestException("The ID not exists");
+            throw new BadRequestException(messageSource.getMessage("validation.id.not.exists", null, Locale.getDefault()));
 
         }
 

@@ -13,10 +13,12 @@ import com.portfolio.service.IProjectTypeService;
 import com.portfolio.util.PersonUtil;
 import com.portfolio.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,18 +29,21 @@ public class ProjectServiceImpl implements IProjectService {
     private final IProjectMapper projectMapper;
     private final IProjectRepository projectRepository;
     private final IProjectTypeService projectTypeService;
+    private final MessageSource messageSource;
 
     @Autowired
     public ProjectServiceImpl(IBusinessService businessService,
                               IPersonService personService,
                               IProjectMapper projectMapper,
                               IProjectRepository projectRepository,
-                              IProjectTypeService projectTypeService){
+                              IProjectTypeService projectTypeService,
+                              MessageSource messageSource){
         this.businessService = businessService;
         this.personService = personService;
         this.projectMapper = projectMapper;
         this.projectRepository = projectRepository;
         this.projectTypeService = projectTypeService;
+        this.messageSource = messageSource;
     }
 
     @Override
@@ -105,7 +110,7 @@ public class ProjectServiceImpl implements IProjectService {
 
         } else {
 
-            throw new BadRequestException("The ID not exists");
+            throw new BadRequestException(messageSource.getMessage("validation.id.not.exists", null, Locale.getDefault()));
 
         }
 
