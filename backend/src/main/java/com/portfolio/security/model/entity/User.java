@@ -3,7 +3,9 @@ package com.portfolio.security.model.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+
 import java.io.Serializable;
+
 import java.time.LocalDateTime;
 
 @Data

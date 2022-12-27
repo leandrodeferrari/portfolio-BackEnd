@@ -7,7 +7,6 @@ import java.util.List;
 public interface IJobExperienceTypeService {
 
     List<String> getAllTypes();
-
     JobExperienceType findById(Integer id);
 
 }

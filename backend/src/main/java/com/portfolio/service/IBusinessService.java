@@ -9,9 +9,7 @@ import java.util.List;
 public interface IBusinessService {
 
     List<BusinessDto> getAll();
-
     Business findById(Integer id);
-
     BusinessDto create(BusinessInDto businessInDto);
 
 }

@@ -4,6 +4,7 @@ import com.portfolio.model.entity.CareerType;
 import com.portfolio.repository.ICareerTypeRepository;
 import com.portfolio.service.ICareerTypeService;
 import com.portfolio.util.ValidationUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

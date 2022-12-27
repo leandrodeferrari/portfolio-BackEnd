@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 public interface IAuthService {
 
     LoginOutDto login(LoginInDto loginInDto);
-
     void logout(HttpServletRequest request, HttpServletResponse response);
 
 }

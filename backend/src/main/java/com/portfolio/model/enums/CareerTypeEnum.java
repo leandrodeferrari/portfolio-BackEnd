@@ -7,7 +7,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum CareerTypeEnum {
 
-    ASSOCIATE_DEGREE("Tecnicatura"), ENGINEERING("Ingeniería"), BACHELORS_DEGREE("Licenciatura");
+    ASSOCIATE_DEGREE("Tecnicatura"),
+    ENGINEERING("Ingeniería"),
+    BACHELORS_DEGREE("Licenciatura");
 
     private final String name;
 

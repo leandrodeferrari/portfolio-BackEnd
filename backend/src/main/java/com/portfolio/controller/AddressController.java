@@ -3,14 +3,17 @@ package com.portfolio.controller;
 import com.portfolio.dto.request.AddressInDto;
 import com.portfolio.dto.response.AddressDto;
 import com.portfolio.service.IAddressService;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
 import java.util.List;
 
 @Tag(name = "Address", description = "Address Controller")
@@ -49,7 +52,7 @@ public class AddressController {
         return ResponseEntity.ok().body(addressService.getAllProvinces());
     }
 
-    @Operation(description = "Create an Address. User Authenticated. Parameters: Schema AddressDto.")
+    @Operation(description = "Create an Address. User Authenticated. Parameters: Schema AddressInDto.")
     @PostMapping
     public ResponseEntity<AddressDto> create(@Valid @RequestBody AddressInDto addressInDto){
         return ResponseEntity.status(HttpStatus.CREATED).body(addressService.create(addressInDto));
