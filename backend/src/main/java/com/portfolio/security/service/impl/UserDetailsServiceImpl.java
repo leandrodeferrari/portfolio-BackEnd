@@ -3,6 +3,7 @@ package com.portfolio.security.service.impl;
 import com.portfolio.security.model.UserDetailsImpl;
 import com.portfolio.security.model.entity.User;
 import com.portfolio.security.repository.IUserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

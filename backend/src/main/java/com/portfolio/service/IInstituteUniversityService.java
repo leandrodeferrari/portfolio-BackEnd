@@ -9,9 +9,7 @@ import java.util.List;
 public interface IInstituteUniversityService {
 
     List<InstituteUniversityDto> getAll();
-
     InstituteUniversity findById(Integer id);
-
     InstituteUniversityDto create(InstituteUniversityInDto instituteUniversityInDto);
 
 }

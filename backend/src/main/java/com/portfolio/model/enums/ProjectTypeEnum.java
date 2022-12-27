@@ -7,7 +7,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum ProjectTypeEnum {
 
-    OWN("Propio"), ACCELERATION("Aceleración");
+    OWN("Propio"),
+    ACCELERATION("Aceleración");
 
     private final String name;
 

@@ -7,7 +7,10 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum SeniorityTypeEnum {
 
-    TRAINEE("Trainee"), JUNIOR("Junior"), SEMISENIOR("SemiSenior"), SENIOR("Senior");
+    TRAINEE("Trainee"),
+    JUNIOR("Junior"),
+    SEMISENIOR("SemiSenior"),
+    SENIOR("Senior");
 
     private final String name;
 

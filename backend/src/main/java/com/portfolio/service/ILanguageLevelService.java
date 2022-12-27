@@ -7,7 +7,6 @@ import java.util.List;
 public interface ILanguageLevelService {
 
     List<String> getAllLevels();
-
     LanguageLevel findById(Integer id);
 
 }

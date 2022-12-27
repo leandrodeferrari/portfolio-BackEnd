@@ -4,6 +4,7 @@ import com.portfolio.model.entity.Locality;
 import com.portfolio.repository.ILocalityRepository;
 import com.portfolio.service.ILocalityService;
 import com.portfolio.util.ValidationUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -3,6 +3,7 @@ package com.portfolio.mapper;
 import com.portfolio.dto.request.InstituteUniversityInDto;
 import com.portfolio.dto.response.InstituteUniversityDto;
 import com.portfolio.model.entity.InstituteUniversity;
+
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

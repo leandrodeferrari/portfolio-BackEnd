@@ -7,9 +7,7 @@ import java.util.List;
 public interface ICityService {
 
     List<String> getAll();
-
     City findByName(String name);
-
     String create(String name);
 
 }

@@ -3,6 +3,7 @@ package com.portfolio.mapper;
 import com.portfolio.dto.request.CourseInDto;
 import com.portfolio.dto.response.CourseDto;
 import com.portfolio.model.entity.Course;
+
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

@@ -3,6 +3,7 @@ package com.portfolio.security.config;
 import com.portfolio.security.jwt.JwtAuthenticationEntryPoint;
 import com.portfolio.security.jwt.JwtAuthorizationFilter;
 import com.portfolio.security.service.impl.UserDetailsServiceImpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

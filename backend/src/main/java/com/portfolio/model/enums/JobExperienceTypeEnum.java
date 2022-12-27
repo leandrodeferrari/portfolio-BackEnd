@@ -7,7 +7,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum JobExperienceTypeEnum {
 
-    FREELANCE("Freelance"), CONTRACTOR("Contractor"), DEPENDENCY_RELATIONSHIP("Relación de dependencia");
+    FREELANCE("Freelance"),
+    CONTRACTOR("Contractor"),
+    DEPENDENCY_RELATIONSHIP("En relación de dependencia");
 
     private final String name;
 
