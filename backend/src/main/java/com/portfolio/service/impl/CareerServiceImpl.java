@@ -13,10 +13,12 @@ import com.portfolio.service.IPersonService;
 import com.portfolio.util.PersonUtil;
 import com.portfolio.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,18 +29,21 @@ public class CareerServiceImpl implements ICareerService {
     private final ICareerTypeService careerTypeService;
     private final IInstituteUniversityService instituteUniversityService;
     private final IPersonService personService;
+    private final MessageSource messageSource;
 
     @Autowired
     public CareerServiceImpl(ICareerMapper careerMapper,
                              ICareerRepository careerRepository,
                              ICareerTypeService careerTypeService,
                              IInstituteUniversityService instituteUniversityService,
-                             IPersonService personService){
+                             IPersonService personService,
+                             MessageSource messageSource){
         this.careerMapper = careerMapper;
         this.careerRepository = careerRepository;
         this.careerTypeService = careerTypeService;
         this.instituteUniversityService = instituteUniversityService;
         this.personService = personService;
+        this.messageSource = messageSource;
     }
 
     @Override
@@ -102,7 +107,7 @@ public class CareerServiceImpl implements ICareerService {
 
         } else {
 
-            throw new BadRequestException("The ID not exists");
+            throw new BadRequestException(messageSource.getMessage("validation.id.not.exists", null, Locale.getDefault()));
 
         }
 

@@ -12,10 +12,12 @@ import com.portfolio.service.IPersonService;
 import com.portfolio.util.PersonUtil;
 import com.portfolio.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,16 +27,19 @@ public class LanguageServiceImpl implements ILanguageService {
     private final ILanguageMapper languageMapper;
     private final ILanguageRepository languageRepository;
     private final IPersonService personService;
+    private final MessageSource messageSource;
 
     @Autowired
     public LanguageServiceImpl(ILanguageLevelService languageLevelService,
                                ILanguageMapper languageMapper,
                                ILanguageRepository languageRepository,
-                               IPersonService personService){
+                               IPersonService personService,
+                               MessageSource messageSource){
         this.languageLevelService = languageLevelService;
         this.languageMapper = languageMapper;
         this.languageRepository = languageRepository;
         this.personService = personService;
+        this.messageSource = messageSource;
     }
 
     @Override
@@ -95,7 +100,7 @@ public class LanguageServiceImpl implements ILanguageService {
 
         } else {
 
-            throw new BadRequestException("The ID not exists");
+            throw new BadRequestException(messageSource.getMessage("validation.id.not.exists", null, Locale.getDefault()));
 
         }
 

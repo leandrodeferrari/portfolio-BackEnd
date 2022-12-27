@@ -11,10 +11,12 @@ import com.portfolio.service.ITechnologyService;
 import com.portfolio.util.PersonUtil;
 import com.portfolio.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,14 +25,17 @@ public class TechnologyServiceImpl implements ITechnologyService {
     private final IPersonService personService;
     private final ITechnologyMapper technologyMapper;
     private final ITechnologyRepository technologyRepository;
+    private final MessageSource messageSource;
 
     @Autowired
     public TechnologyServiceImpl(IPersonService personService,
                                  ITechnologyMapper technologyMapper,
-                                 ITechnologyRepository technologyRepository){
+                                 ITechnologyRepository technologyRepository,
+                                 MessageSource messageSource){
         this.personService = personService;
         this.technologyMapper = technologyMapper;
         this.technologyRepository = technologyRepository;
+        this.messageSource = messageSource;
     }
 
     @Override
@@ -85,7 +90,7 @@ public class TechnologyServiceImpl implements ITechnologyService {
 
         } else {
 
-            throw new BadRequestException("The ID not exists");
+            throw new BadRequestException(messageSource.getMessage("validation.id.not.exists", null, Locale.getDefault()));
 
         }
 
