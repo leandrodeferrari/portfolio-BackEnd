@@ -1,5 +1,7 @@
 package com.portfolio.service.impl;
 
+import com.portfolio.dto.response.AboutDto;
+import com.portfolio.dto.response.ContactDto;
 import com.portfolio.dto.response.PersonDto;
 import com.portfolio.mapper.IPersonMapper;
 import com.portfolio.model.entity.Person;
@@ -35,6 +37,33 @@ public class PersonServiceImpl implements IPersonService {
     @Override
     public Person findByEmail(String email) {
         return personRepository.findByEmail(email).orElseThrow();
+    }
+
+    @Override
+    public String getBanner() {
+
+        Person person = personRepository.findByEmail(PersonUtil.EMAIL).orElseThrow();
+
+        return person.getBannerUrl();
+
+    }
+
+    @Override
+    public ContactDto getContact() {
+
+        Person person = personRepository.findByEmail(PersonUtil.EMAIL).orElseThrow();
+
+        return personMapper.personToContactDto(person);
+
+    }
+
+    @Override
+    public AboutDto getAbout() {
+
+        Person person = personRepository.findByEmail(PersonUtil.EMAIL).orElseThrow();
+
+        return personMapper.personToAboutDto(person);
+
     }
 
 }

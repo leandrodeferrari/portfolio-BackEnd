@@ -1,5 +1,7 @@
 package com.portfolio.controller;
 
+import com.portfolio.dto.response.AboutDto;
+import com.portfolio.dto.response.ContactDto;
 import com.portfolio.dto.response.PersonDto;
 import com.portfolio.service.IPersonService;
 
@@ -28,6 +30,24 @@ public class PersonController {
     @GetMapping("/person")
     public ResponseEntity<PersonDto> getPerson(){
         return ResponseEntity.ok().body(personService.getPerson());
+    }
+
+    @Operation(description = "Get a Banner. Any User. Parameters: none")
+    @GetMapping("/banner")
+    public ResponseEntity<String> getBanner(){
+        return ResponseEntity.ok().body(personService.getBanner());
+    }
+
+    @Operation(description = "Get Contact. Any User. Parameters: none")
+    @GetMapping("/contact")
+    public ResponseEntity<ContactDto> getContact(){
+        return ResponseEntity.ok().body(personService.getContact());
+    }
+
+    @Operation(description = "Get About. Any User. Parameters: none")
+    @GetMapping("/about")
+    public ResponseEntity<AboutDto> getAbout(){
+        return ResponseEntity.ok().body(personService.getAbout());
     }
 
 }
