@@ -18,6 +18,7 @@ import javax.validation.Valid;
 
 import java.util.List;
 
+@CrossOrigin(origins = {"http://localhost:4200", "www.leandrodeferrari.com.ar"})
 @Tag(name = "Language", description = "Language Controller")
 @RestController
 @RequestMapping("/languages")
