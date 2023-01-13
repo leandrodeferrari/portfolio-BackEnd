@@ -1,6 +1,7 @@
 package com.portfolio.controller;
 
 import com.portfolio.dto.response.AboutDto;
+import com.portfolio.dto.response.BannerDto;
 import com.portfolio.dto.response.ContactDto;
 import com.portfolio.dto.response.PersonDto;
 import com.portfolio.service.IPersonService;
@@ -36,7 +37,7 @@ public class PersonController {
 
     @Operation(description = "Get a Banner. Any User. Parameters: none")
     @GetMapping("/banner")
-    public ResponseEntity<String> getBanner(){
+    public ResponseEntity<BannerDto> getBanner(){
         return ResponseEntity.ok().body(personService.getBanner());
     }
 
