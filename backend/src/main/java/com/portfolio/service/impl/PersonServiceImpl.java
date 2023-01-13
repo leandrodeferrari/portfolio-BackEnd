@@ -1,6 +1,7 @@
 package com.portfolio.service.impl;
 
 import com.portfolio.dto.response.AboutDto;
+import com.portfolio.dto.response.BannerDto;
 import com.portfolio.dto.response.ContactDto;
 import com.portfolio.dto.response.PersonDto;
 import com.portfolio.mapper.IPersonMapper;
@@ -40,11 +41,15 @@ public class PersonServiceImpl implements IPersonService {
     }
 
     @Override
-    public String getBanner() {
+    public BannerDto getBanner() {
 
         Person person = personRepository.findByEmail(PersonUtil.EMAIL).orElseThrow();
 
-        return person.getBannerUrl();
+        BannerDto bannerDto = new BannerDto();
+        bannerDto.setId(person.getId());
+        bannerDto.setBannerUrl(person.getBannerUrl());
+
+        return bannerDto;
 
     }
 
