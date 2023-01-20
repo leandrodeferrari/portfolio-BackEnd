@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
+import java.io.IOException;
+
 import java.sql.SQLIntegrityConstraintViolationException;
 
 import java.util.Set;
@@ -55,6 +57,12 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public ResponseEntity<String> notFoundExceptionHandler(RuntimeException ex){
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler({IOException.class})
+    @ResponseBody
+    public ResponseEntity<String> notIOExceptionHandler(IOException ex){
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);
     }
 
 }
