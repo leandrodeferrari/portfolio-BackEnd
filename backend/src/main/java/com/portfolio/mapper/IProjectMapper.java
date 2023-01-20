@@ -15,8 +15,8 @@ import org.mapstruct.Mappings;
 public interface IProjectMapper {
 
     @Mappings({
-            @Mapping(target = "startDate", dateFormat = "yyyy-MM-dd"),
-            @Mapping(target = "endDate", dateFormat = "yyyy-MM-dd"),
+            @Mapping(target = "startDate", dateFormat = "MM/yyyy"),
+            @Mapping(target = "endDate", dateFormat = "MM/yyyy"),
             @Mapping(target = "projectTypeName", source = "project.projectType.name"),
             @Mapping(target = "businessDto", source = "business")
     })
