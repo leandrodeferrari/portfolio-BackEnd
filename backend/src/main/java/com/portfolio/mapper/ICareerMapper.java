@@ -15,8 +15,8 @@ import org.mapstruct.Mappings;
 public interface ICareerMapper {
 
     @Mappings({
-            @Mapping(target = "startDate", dateFormat = "yyyy-MM-dd"),
-            @Mapping(target = "endDate", dateFormat = "yyyy-MM-dd"),
+            @Mapping(target = "startDate", dateFormat = "MM/yyyy"),
+            @Mapping(target = "endDate", dateFormat = "MM/yyyy"),
             @Mapping(target = "instituteUniversityDto", source = "instituteUniversity"),
             @Mapping(target = "careerTypeName", source = "career.careerType.name")
     })
