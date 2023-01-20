@@ -8,12 +8,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @Tag(name = "Authentication", description = "Authentication Controller")
@@ -32,13 +29,6 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<LoginOutDto> login(@Valid @RequestBody LoginInDto loginInDto){
         return ResponseEntity.ok().body(authService.login(loginInDto));
-    }
-
-    @Operation(description = "Logout User. User Authenticated. Parameters: Schema AddressDto.")
-    @PostMapping("/logout")
-    public ResponseEntity<?> logout(HttpServletRequest request, HttpServletResponse response){
-        authService.logout(request, response);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }
