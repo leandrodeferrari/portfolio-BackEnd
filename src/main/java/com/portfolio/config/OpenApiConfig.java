@@ -19,7 +19,7 @@ public class OpenApiConfig {
     private final String apiVersion;
 
     public OpenApiConfig (@Value("Portfolio") String name,
-                          @Value("0.0.1") String apiVersion) {
+                          @Value("1.0.0") String apiVersion) {
         this.name = name;
         this.apiVersion = apiVersion;
     }
