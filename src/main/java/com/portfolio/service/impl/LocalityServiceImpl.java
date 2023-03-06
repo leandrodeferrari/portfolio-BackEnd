@@ -21,6 +21,7 @@ public class LocalityServiceImpl implements ILocalityService {
         this.localityRepository = localityRepository;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<String> getAll() {
         return localityRepository.findAll()
@@ -29,6 +30,7 @@ public class LocalityServiceImpl implements ILocalityService {
                 .toList();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Locality findByName(String name) {
 

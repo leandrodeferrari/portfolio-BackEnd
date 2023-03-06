@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-@CrossOrigin(origins = "https://leandro-deferrari.web.app")
 @Tag(name = "Person", description = "Person Controller")
 @RestController
 @RequestMapping("/persons")

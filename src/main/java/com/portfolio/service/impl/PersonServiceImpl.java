@@ -12,6 +12,7 @@ import com.portfolio.util.PersonUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class PersonServiceImpl implements IPersonService {
@@ -26,6 +27,7 @@ public class PersonServiceImpl implements IPersonService {
         this.personRepository = personRepository;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public PersonDto getPerson() {
 
@@ -35,11 +37,13 @@ public class PersonServiceImpl implements IPersonService {
 
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Person findByEmail(String email) {
         return personRepository.findByEmail(email).orElseThrow();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public BannerDto getBanner() {
 
@@ -53,6 +57,7 @@ public class PersonServiceImpl implements IPersonService {
 
     }
 
+    @Transactional(readOnly = true)
     @Override
     public ContactDto getContact() {
 
@@ -62,6 +67,7 @@ public class PersonServiceImpl implements IPersonService {
 
     }
 
+    @Transactional(readOnly = true)
     @Override
     public AboutDto getAbout() {
 

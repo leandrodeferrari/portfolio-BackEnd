@@ -47,6 +47,7 @@ public class CareerServiceImpl implements ICareerService {
         this.messageSource = messageSource;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<CareerDto> getAll() {
         return careerRepository.findAll()

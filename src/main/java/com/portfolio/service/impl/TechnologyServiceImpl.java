@@ -39,6 +39,7 @@ public class TechnologyServiceImpl implements ITechnologyService {
         this.messageSource = messageSource;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<TechnologyDto> getAll() {
         return technologyRepository.findAll()

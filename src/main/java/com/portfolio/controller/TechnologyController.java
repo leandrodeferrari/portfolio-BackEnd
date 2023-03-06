@@ -17,7 +17,6 @@ import javax.validation.Valid;
 
 import java.util.List;
 
-@CrossOrigin(origins = "https://leandro-deferrari.web.app")
 @Tag(name = "Technology", description = "Technology Controller")
 @RestController
 @RequestMapping("/technologies")
