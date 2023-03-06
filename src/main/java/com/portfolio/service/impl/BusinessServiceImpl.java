@@ -32,6 +32,7 @@ public class BusinessServiceImpl implements IBusinessService {
         this.businessRepository = businessRepository;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<BusinessDto> getAll() {
         return businessRepository.findAll()
@@ -40,6 +41,7 @@ public class BusinessServiceImpl implements IBusinessService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Business findById(Integer id) {
 

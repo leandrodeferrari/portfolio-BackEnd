@@ -21,6 +21,7 @@ public class CityServiceImpl implements ICityService {
         this.cityRepository = cityRepository;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<String> getAll() {
         return cityRepository.findAll()
@@ -29,6 +30,7 @@ public class CityServiceImpl implements ICityService {
                 .toList();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public City findByName(String name) {
 

@@ -21,6 +21,7 @@ public class ProvinceServiceImpl implements IProvinceService {
         this.provinceRepository = provinceRepository;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<String> getAll() {
         return provinceRepository.findAll()
@@ -29,6 +30,7 @@ public class ProvinceServiceImpl implements IProvinceService {
                 .toList();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Province findByName(String name) {
 

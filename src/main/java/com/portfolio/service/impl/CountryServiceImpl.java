@@ -21,6 +21,7 @@ public class CountryServiceImpl implements ICountryService {
         this.countryRepository = countryRepository;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<String> getAll() {
         return countryRepository.findAll()
@@ -29,6 +30,7 @@ public class CountryServiceImpl implements ICountryService {
                 .toList();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Country findByName(String name) {
 

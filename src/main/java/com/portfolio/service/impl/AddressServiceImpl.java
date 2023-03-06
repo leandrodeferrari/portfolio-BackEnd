@@ -45,26 +45,31 @@ public class AddressServiceImpl implements IAddressService {
         this.messageSource = messageSource;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<String> getAllCities() {
         return cityService.getAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<String> getAllCountries() {
         return countryService.getAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<String> getAllLocalities() {
         return localityService.getAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<String> getAllProvinces() {
         return provinceService.getAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Address findById(Integer id) {
 

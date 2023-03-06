@@ -43,6 +43,7 @@ public class LanguageServiceImpl implements ILanguageService {
         this.messageSource = messageSource;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<LanguageDto> getAll() {
         return languageRepository.findAll()
