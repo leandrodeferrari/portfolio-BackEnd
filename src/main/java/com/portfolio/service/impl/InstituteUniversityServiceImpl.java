@@ -32,6 +32,7 @@ public class InstituteUniversityServiceImpl implements IInstituteUniversityServi
         this.instituteUniversityRepository = instituteUniversityRepository;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<InstituteUniversityDto> getAll() {
         return instituteUniversityRepository.findAll()
@@ -40,6 +41,7 @@ public class InstituteUniversityServiceImpl implements IInstituteUniversityServi
                 .collect(Collectors.toList());
     }
 
+    @Transactional(readOnly = true)
     @Override
     public InstituteUniversity findById(Integer id) {
 

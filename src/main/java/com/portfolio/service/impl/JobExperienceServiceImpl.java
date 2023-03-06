@@ -47,6 +47,7 @@ public class JobExperienceServiceImpl implements IJobExperienceService {
         this.messageSource = messageSource;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<JobExperienceDto> getAll() {
         return jobExperienceRepository.findAll()

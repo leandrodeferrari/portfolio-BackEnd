@@ -43,6 +43,7 @@ public class CourseServiceImpl implements ICourseService {
         this.messageSource = messageSource;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<CourseDto> getAll() {
         return courseRepository.findAll()

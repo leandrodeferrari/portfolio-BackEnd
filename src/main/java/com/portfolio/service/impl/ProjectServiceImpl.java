@@ -47,6 +47,7 @@ public class ProjectServiceImpl implements IProjectService {
         this.messageSource = messageSource;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<ProjectDto> getAll() {
         return projectRepository.findAll()

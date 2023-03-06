@@ -7,6 +7,7 @@ import com.portfolio.util.ValidationUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class ProjectTypeServiceImpl implements IProjectTypeService {
         this.projectTypeRepository = projectTypeRepository;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<String> getAllTypes() {
         return projectTypeRepository.findAll()
@@ -28,6 +30,7 @@ public class ProjectTypeServiceImpl implements IProjectTypeService {
                 .toList();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public ProjectType findById(Integer id) {
 
