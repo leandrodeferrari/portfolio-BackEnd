@@ -23,6 +23,7 @@
 		<mapstruct.lombok.version>0.2.0</mapstruct.lombok.version>
 		<jwt.version>0.11.5</jwt.version>
 		<send.grid.version>4.9.3</send.grid.version>
+		<cloudinary.version>1.27.0</cloudinary.version>
 	</properties>
 
 	<dependencies>
@@ -117,6 +118,11 @@
 			<groupId>com.sendgrid</groupId>
 			<artifactId>sendgrid-java</artifactId>
 			<version>${send.grid.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cloudinary</groupId>
+			<artifactId>cloudinary-http44</artifactId>
+			<version>${cloudinary.version}</version>
 		</dependency>
 	</dependencies>
 

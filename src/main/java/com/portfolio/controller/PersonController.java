@@ -1,5 +1,6 @@
 package com.portfolio.controller;
 
+import com.portfolio.dto.request.AboutInDto;
 import com.portfolio.dto.request.EmailDto;
 import com.portfolio.dto.response.AboutDto;
 import com.portfolio.dto.response.BannerDto;
@@ -15,7 +16,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Map;
 
 @Tag(name = "Person", description = "Person Controller")
@@ -59,6 +62,28 @@ public class PersonController {
     @PostMapping("/contact")
     public ResponseEntity<Map<String, String>> sendEmail(@RequestBody EmailDto emailDto) throws EmailException {
         return ResponseEntity.ok().body(emailService.sendEMail(emailDto));
+    }
+
+    @PatchMapping("/banner")
+    public ResponseEntity<BannerDto> updateBanner(@RequestParam("file") MultipartFile file) throws IOException {
+        return ResponseEntity.ok(this.personService.updateBanner(file));
+    }
+
+    @DeleteMapping("/banner")
+    public ResponseEntity<Void> deleteBanner(){
+        this.personService.deleteBanner();
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/about")
+    public ResponseEntity<AboutDto> updateAbout(@RequestBody AboutInDto dto){
+        return ResponseEntity.ok(this.personService.updateAbout(dto));
+    }
+
+    @DeleteMapping("/about")
+    public ResponseEntity<Void> deleteAbout(){
+        this.personService.deleteAbout();
+        return ResponseEntity.noContent().build();
     }
 
 }
